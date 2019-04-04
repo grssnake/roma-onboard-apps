@@ -23,17 +23,22 @@ def load_images(path):
         List of images.
     """
     #print(sorted(os.listdir(path)))
+    avaible = ['g28428', 'g28302', 'g28250']
+
 
     images = []
-    for file_name in soretd(os.listdir(path)):
-        image = pygame.image.load(path + os.sep + file_name).convert()
-        images.append(image)
+    for file_name in sorted(os.listdir(path)):
+        if True: #file_name in avaible:
+            image = pygame.image.load(path + os.sep + file_name).convert()
+            images.append(image)
     return images
 
 def main():
     images = load_images(path='eyes')
+
+    print(images)
+
     images_left = [pygame.transform.flip(image, True, False) for image in images]  # Flipping every image.
-    sprites = [pygame.sprite.Sprite()]
 
     seq = [
         [images[7], 5],
