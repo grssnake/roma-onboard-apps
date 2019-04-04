@@ -17,15 +17,14 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
 
-for(x, y, w, h) in faces:
-        image = cv2.rectangle(image,(x, y), (x+w, y+h), (255, 0, 0), 2)
+for (x, y, w, h) in faces:
+    image = cv2.rectangle(image, (x, y), (x + w, y + h), (255, 0, 0), 2)
 
-    cv2.imshow("Frame", image)
+cv2.imshow("Frame", image)
 
-    key = cv2.waitKey(100) & 0xFF
+key = cv2.waitKey(100) & 0xFF
 
+rawCapture.truncate(0)
 
-    rawCapture.truncate(0)
-
-    if key == ord("q"):
-         break
+if key == ord("q"):
+    break

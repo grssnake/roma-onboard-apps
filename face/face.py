@@ -10,7 +10,7 @@ SIZE = WIDTH, HEIGHT = 480, 800
 BACKGROUND_COLOR = pygame.Color('black')
 FPS = 60
 
-screen = pygame.display.set_mode(SIZE)
+screen = pygame.display.set_mode(SIZE, pygame.FULLSCREEN)
 pygame.display.set_caption('Roma Face')
 clock = pygame.time.Clock()
 
@@ -23,7 +23,7 @@ def load_images(path):
         List of images.
     """
     #print(sorted(os.listdir(path)))
-    avaible = ['g28428', 'g28302', 'g28250']
+    #avaible = ['g28428', 'g28302', 'g28250']
 
 
     images = []
