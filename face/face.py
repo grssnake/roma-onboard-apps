@@ -22,8 +22,10 @@ def load_images(path):
     Returns:
         List of images.
     """
+    #print(sorted(os.listdir(path)))
+
     images = []
-    for file_name in os.listdir(path):
+    for file_name in soretd(os.listdir(path)):
         image = pygame.image.load(path + os.sep + file_name).convert()
         images.append(image)
     return images
