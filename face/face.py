@@ -4,6 +4,8 @@ import os, sys
 import pygame
 from time import sleep
 
+cwd = os.path.dirname(os.path.realpath(__file__))
+
 pygame.init()
 
 SIZE = WIDTH, HEIGHT = 480, 800
@@ -29,7 +31,7 @@ def load_images(path):
     images = []
     for file_name in sorted(os.listdir(path)):
         if True: #file_name in avaible:
-            image = pygame.image.load(path + os.sep + file_name).convert()
+            image = pygame.image.load(cwd + os.sep + path + os.sep + file_name).convert()
             images.append(image)
     return images
 
