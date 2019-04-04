@@ -1,3 +1,3 @@
 #!/bin/sh
 
-python3 ./face.py
+python3 ~/Apps/roma-onboard-apps/face/face.py
