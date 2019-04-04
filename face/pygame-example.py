@@ -2,6 +2,7 @@
 
 import os
 import pygame
+
 pygame.init()
 
 SIZE = WIDTH, HEIGHT = 480, 800
@@ -50,7 +51,7 @@ class AnimatedSprite(pygame.sprite.Sprite):
 
         self.velocity = pygame.math.Vector2(0, 0)
 
-        self.animation_time = 0.5
+        self.animation_time = 1
         self.current_time = 0
 
         self.animation_frames = 11
@@ -102,12 +103,17 @@ class AnimatedSprite(pygame.sprite.Sprite):
 
 def main():
     images = load_images(path='eyes')
+    images_left = [pygame.transform.flip(image, True, False) for image in images]  # Flipping every image.
+    sprites = [pygame.sprite.Sprite()]
+
+
     player = AnimatedSprite(position=(15, 100), images=images)
     all_sprites = pygame.sprite.Group(player)  # Creates a sprite group and adds 'player' to it.
 
+
+
     running = True
     while running:
-
         dt = clock.tick(FPS) / 1000  # Amount of seconds between each loop.
         all_sprites.update(dt)  # Calls the 'update' method on all sprites in the list (currently just the player).
 
