@@ -46,6 +46,8 @@ def load_images(path):
 
 
 def main():
+    os.environ['DISPLAY'] = ':0'
+
     screen = pygame.display.set_mode(SIZE, pygame.FULLSCREEN)
     pygame.display.set_caption('Roma Face')
     clock = pygame.time.Clock()
