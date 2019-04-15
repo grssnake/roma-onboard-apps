@@ -1,15 +1,13 @@
 import os
 import sys
-sys.path.insert(1, os.path.join(os.path.abspath('.'), 'app'))
+from flask import Flask
 
-from app import app
+app = Flask(__name__)
 
 
-# configuration
-# DATABASE = '/tmp/flaskr.db'
-DEBUG = True
-# SECRET_KEY = 'development key'
-# USERNAME = 'admin'
-# PASS1WORD = 'default'
+@app.route('/')
+@app.route('/index')
+def index():
+    return "**********"
 
-app.config.from_object(__name__)
+
