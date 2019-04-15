@@ -1,9 +1,9 @@
-'''
+"""
 Simple Cam Test - BGR and Gray
     Create by pythonprogramming.net ==> See the tutorial here:
     https://pythonprogramming.net/loading-video-python-opencv-tutorial
 Adapted by Marcelo Rovai - MJRoBot.org @8Feb18
-'''
+"""
 
 import numpy as np
 import cv2
