@@ -87,6 +87,7 @@ def main():
             sleep(i[1])
 
         if os.path.exists(CMD_STOP):
+            print('Stop face')
             os.remove(CMD_STOP)
             running = False
 
@@ -97,6 +98,7 @@ def main():
 
 if __name__ == '__main__':
     if os.path.exists(CMD_START):
+        print('Start face')
         os.remove(CMD_START)
         main()
     exit(0)
