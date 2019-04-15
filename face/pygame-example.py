@@ -106,11 +106,8 @@ def main():
     images_left = [pygame.transform.flip(image, True, False) for image in images]  # Flipping every image.
     sprites = [pygame.sprite.Sprite()]
 
-
     player = AnimatedSprite(position=(15, 100), images=images)
     all_sprites = pygame.sprite.Group(player)  # Creates a sprite group and adds 'player' to it.
-
-
 
     running = True
     while running:

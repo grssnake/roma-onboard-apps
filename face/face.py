@@ -25,10 +25,6 @@ SIZE = WIDTH, HEIGHT = 480, 800
 BACKGROUND_COLOR = pygame.Color('black')
 FPS = 60
 
-screen = pygame.display.set_mode(SIZE, pygame.FULLSCREEN)
-pygame.display.set_caption('Roma Face')
-clock = pygame.time.Clock()
-
 
 def load_images(path):
     """
@@ -50,6 +46,12 @@ def load_images(path):
 
 
 def main():
+    os.environ['DISPLAY'] = ':0'
+
+    screen = pygame.display.set_mode(SIZE, pygame.FULLSCREEN)
+    pygame.display.set_caption('Roma Face')
+    clock = pygame.time.Clock()
+
     images = load_images(path='eyes')
 
     print(images)
@@ -85,6 +87,7 @@ def main():
             sleep(i[1])
 
         if os.path.exists(CMD_STOP):
+            print('Stop face')
             os.remove(CMD_STOP)
             running = False
 
@@ -95,6 +98,7 @@ def main():
 
 if __name__ == '__main__':
     if os.path.exists(CMD_START):
+        print('Start face')
         os.remove(CMD_START)
         main()
     exit(0)
