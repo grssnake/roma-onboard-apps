@@ -1,0 +1,74 @@
+#!/bin/sh
+
+stime_M=$(date +%M)
+stime_H=$(date +%H)
+stime_Mn=$(date +%m)
+stime_D=$(date +%_d)
+stime_W=$(date +%w)
+MN=$stime_Mn
+WW=$stime_W
+
+case $WW in
+  1)
+    week="Понедельник"
+    ;;
+  2)
+    week="Вторник"
+    ;;
+  3)
+    week="Среда"
+    ;;
+  4)
+    week="четверг"
+    ;;
+  5)
+    week="пятница"
+    ;;
+  6)
+    week="суббота"
+    ;;
+  0)
+    week="воскресенье"
+    ;;
+esac
+
+case $MN in
+  1)
+    mon="января"
+    ;;
+  2)
+    mon="февраля"
+    ;;
+  3)
+    mon="марта"
+    ;;
+  4)
+    mon="апреля"
+    ;;
+  5)
+    mon="мая"
+    ;;
+  6)
+    mon="июня"
+    ;;
+  7)
+    mon="июля"
+    ;;
+  8)
+    mon="августа"
+    ;;
+  9)
+    mon="сентября"
+    ;;
+  10)
+    mon="октября"
+    ;;
+  11)
+    mon="ноября"
+    ;;
+  12)
+    mon="декабря"
+    ;;
+esac
+
+echo "Сегодня"  $stime_D $mon $week "Время в системе" $stime_H "часов" $stime_M "минут" | festival --tts --language russian
