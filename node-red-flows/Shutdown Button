@@ -1,0 +1,177 @@
+[
+    {
+        "id": "f29adc4b.eeeec",
+        "type": "tab",
+        "label": "Shutdown Button",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "40bc50aa.986d5",
+        "type": "trigger",
+        "z": "f29adc4b.eeeec",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "250",
+        "extend": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "name": "",
+        "x": 340,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "21b3fb1d.d16454",
+        "type": "rpi-gpio in",
+        "z": "f29adc4b.eeeec",
+        "name": "button",
+        "pin": "5",
+        "intype": "tri",
+        "debounce": "25",
+        "read": false,
+        "x": 146.60000610351562,
+        "y": 175.40000915527344,
+        "wires": [
+            [
+                "d7549207.692b8",
+                "95986c00.d995d"
+            ]
+        ]
+    },
+    {
+        "id": "d7549207.692b8",
+        "type": "debug",
+        "z": "f29adc4b.eeeec",
+        "name": "buttonNotPressed",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 363.6000061035156,
+        "y": 153.00000286102295,
+        "wires": [],
+        "icon": "font-awesome/fa-power-off"
+    },
+    {
+        "id": "95986c00.d995d",
+        "type": "switch",
+        "z": "f29adc4b.eeeec",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 187.60000610351562,
+        "y": 287,
+        "wires": [
+            [
+                "479c841f.5d28ec",
+                "858cbdd4.9514e"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "26c9d487.0fedbc",
+        "type": "file",
+        "z": "f29adc4b.eeeec",
+        "name": "log shutdown command",
+        "filename": "/tmp/shutdown-button.log",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "utf8",
+        "x": 592.6000518798828,
+        "y": 320.40001487731934,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "479c841f.5d28ec",
+        "type": "function",
+        "z": "f29adc4b.eeeec",
+        "name": "getDate",
+        "func": "// Create a Date object from the payload\nvar date = new Date();\n// Change the payload to be a formatted Date string\nmsg.payload = date.toString() + \": \" + msg.payload;\n// Return the message so it can be sent on\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 335.6000061035156,
+        "y": 310.0000057220459,
+        "wires": [
+            [
+                "26c9d487.0fedbc"
+            ]
+        ]
+    },
+    {
+        "id": "9fd009c6.02e268",
+        "type": "tail",
+        "z": "f29adc4b.eeeec",
+        "name": "",
+        "filetype": "binary",
+        "split": "",
+        "filename": "/tmp/shutdown-button.log",
+        "x": 206.60000610351562,
+        "y": 466,
+        "wires": [
+            [
+                "f53f5e55.e1cd9"
+            ]
+        ]
+    },
+    {
+        "id": "f53f5e55.e1cd9",
+        "type": "debug",
+        "z": "f29adc4b.eeeec",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 594.6000061035156,
+        "y": 462.0000057220459,
+        "wires": []
+    },
+    {
+        "id": "858cbdd4.9514e",
+        "type": "exec",
+        "z": "f29adc4b.eeeec",
+        "command": "sudo shutdown -h now",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "Shutdown",
+        "x": 386.60000228881836,
+        "y": 241.90000343322754,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    }
+]
