@@ -1,5 +1,5 @@
 import time
-#import serial
+import serial
 import csv
 import os
 
