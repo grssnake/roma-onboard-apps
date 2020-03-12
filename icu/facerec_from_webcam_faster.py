@@ -25,11 +25,11 @@ alex_face_encoding = face_recognition.face_encodings(alex_image)[0]
 # Create arrays of known face encodings and their names
 known_face_encodings = [
     alex_face_encoding,
-    sergey_face_encoding
+    # sergey_face_encoding
 ]
 known_face_names = [
     "Aleksey",
-    "Sergey"
+    # "Sergey"
 ]
 
 # Initialize some variables
