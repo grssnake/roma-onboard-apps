@@ -71,4 +71,4 @@ case $MN in
     ;;
 esac
 
-echo "Сегодня"  $stime_D $mon $week "Время в системе" $stime_H "часов" $stime_M "минут" | festival --tts --language russian
+echo "Сегодня"  $stime_D $mon $week "Время в системе" $stime_H "часов" $stime_M "минут" | festival --speak --language russian
