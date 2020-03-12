@@ -25,7 +25,7 @@ alex_face_encoding = face_recognition.face_encodings(alex_image)[0]
 sergey_image = face_recognition.load_image_file("/home/pi/Pictures/known_faces/Sergey.jpg")
 sergey_face_encoding = face_recognition.face_encodings(sergey_image)[0]
 
-putin_image = face_recognition.load_image_file("/home/pi/Pictures/known_faces/Sergey.jpg")
+putin_image = face_recognition.load_image_file("/home/pi/Pictures/known_faces/Putin.jpg")
 putin_face_encoding = face_recognition.face_encodings(putin_image)[0]
 
 # Create arrays of known face encodings and their names
