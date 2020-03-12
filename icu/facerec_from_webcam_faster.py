@@ -3,10 +3,12 @@ import cv2
 import numpy as np
 import os
 
-# This is a demo of running face recognition on live video from your webcam. It's a little more complicated than the
-# other example, but it includes some basic performance tweaks to make things run a lot faster:
-#   1. Process each video frame at 1/4 resolution (though still display it at full resolution)
-#   2. Only detect faces in every other frame of video.
+import pyttsx3
+tts = pyttsx3.init()
+voices = tts.getProperty('voices')
+tts.setProperty('voice', 'ru')
+tts.say('Привет! Меня зовут Рома. Я очень рад вас видеть!')
+tts.runAndWait()
 
 if 'DISPLAY' in os.environ:
     print(os.environ['DISPLAY'])
@@ -22,17 +24,21 @@ alex_image = face_recognition.load_image_file("/home/pi/Pictures/known_faces/Ale
 alex_face_encoding = face_recognition.face_encodings(alex_image)[0]
 
 # Load a second sample picture and learn how to recognize it.
-# sergey_image = face_recognition.load_image_file("/home/pi/Pictures/known_faces/Sergey.jpg")
-# sergey_face_encoding = face_recognition.face_encodings(sergey_image)[0]
+sergey_image = face_recognition.load_image_file("/home/pi/Pictures/known_faces/Sergey.jpg")
+sergey_face_encoding = face_recognition.face_encodings(sergey_image)[0]
 
 # Create arrays of known face encodings and their names
 known_face_encodings = [
     alex_face_encoding,
-    # sergey_face_encoding
+    sergey_face_encoding
 ]
 known_face_names = [
     "Aleksey",
-    # "Sergey"
+    "Sergey"
+]
+known_face_names_ru = [
+    "Алексей",
+    "Сергей"
 ]
 
 # Initialize some variables
@@ -74,6 +80,8 @@ while True:
             if matches[best_match_index]:
                 name = known_face_names[best_match_index]
                 print(f"I see you {name}")
+                tts.say(f"Привет {known_face_names_ru[best_match_index]}! Я очень рад вас видеть!")
+                tts.runAndWait()
 
             face_names.append(name)
 
