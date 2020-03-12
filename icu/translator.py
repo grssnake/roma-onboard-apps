@@ -20,10 +20,11 @@ words = {
 }
 
 engine = ESpeakNG()
-engine.voice = 'english'
 engine.speed = 100
 engine.pitch = 32
 engine.voice = 'russian'
 
 engine.say('Привет! Меня зовут Рома. Я очень рад вас видеть!', sync=True)
+engine.voice = 'english'
+engine.say('Hello! My name is Roma. I am glad to see you!', sync=True)
 
