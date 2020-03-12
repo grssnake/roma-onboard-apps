@@ -51,6 +51,9 @@ face_encodings = []
 face_names = []
 process_this_frame = True
 
+tts.say('Можно я на вас посмотрю и попытаюсь вас вспомнить')
+tts.runAndWait()
+
 while True:
     # Grab a single frame of video
     ret, frame = video_capture.read()
