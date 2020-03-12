@@ -8,8 +8,11 @@ import os
 #   1. Process each video frame at 1/4 resolution (though still display it at full resolution)
 #   2. Only detect faces in every other frame of video.
 
-print(os.environ['DISPLAY'])
-os.environ['DISPLAY'] = ':0'
+if 'DISPLAY' in os.environ:
+    print(os.environ['DISPLAY'])
+else:
+    print("Bind xXx")
+    os.environ['DISPLAY'] = ':0'
 
 # Get a reference to webcam #0 (the default one)
 video_capture = cv2.VideoCapture(0)
